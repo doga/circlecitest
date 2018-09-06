@@ -7,9 +7,23 @@ jobs:
       - checkout
       - run: echo "A first hello"
       - run: exit 33
+  build_job_2:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "A second hello"
+      - run: exit 0
 workflows:
   version: 2
-  build:
+  build_1:
     jobs:
       - build_job_1
+  build_2:
+    jobs:
+      - build_job_2
+  build_all:
+    jobs:
+      - build_job_1
+      - build_job_2
   
