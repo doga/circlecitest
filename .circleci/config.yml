@@ -16,12 +16,6 @@ jobs:
       - run: exit 0
 workflows:
   version: 2
-  wf_1:
-    jobs:
-      - job_1
-  wf_2:
-    jobs:
-      - job_2
   wf_all:
     jobs:
       - job_1
