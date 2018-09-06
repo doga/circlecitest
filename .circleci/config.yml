@@ -12,21 +12,19 @@ jobs:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
-      - run: echo "A second hello"
+      - run: echo "Hello $MY_NAME"
       - run: exit 0
 workflows:
   version: 2
   wf_1:
     jobs:
       - job_1
-  wf_2:
-    jobs:
-      - job_2
   wf_all:
     jobs:
       - job_1
       - 
         job_2:
+          context: test-context
           requires: 
             - job_1
 
