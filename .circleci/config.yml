@@ -9,7 +9,7 @@ jobs:
       - run: exit 33
 workflows:
   version: 2
-  build_job_1:
+  build:
     jobs:
       - build_job_1
   
