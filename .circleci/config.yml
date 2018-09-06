@@ -21,7 +21,8 @@ workflows:
       - build_job_1
   build_2:
     jobs:
-      - build_job_2
+      - build_job_2:
+          requires: build_1
   build_all:
     jobs:
       - build_job_1
