@@ -24,11 +24,13 @@ workflows:
   wf_successful_company:
     jobs:
       - hello_world
-      - profit_and_loss:
-        context: successful_company
-        requires: 
-          - hello_world
+      - 
+        profit_and_loss:
+          context: successful_company
+          requires: 
+            - hello_world
   wf_unsuccessful_company:
     jobs:
-      - profit_and_loss:
-        context: unsuccessful_company
+      - 
+        profit_and_loss:
+          context: unsuccessful_company
