@@ -25,7 +25,7 @@ workflows:
         profit_and_loss:
           context: successful_company
           requires: 
-            - job_1
+            - hello_world
   wf_negative:
     jobs:
       - 
