@@ -5,11 +5,12 @@ jobs:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
-      - run: 
-        name: hello world
-        command: |
-          echo "hello world"
-          exit 0
+      - 
+        run: 
+          name: hello world
+          command: |
+            echo "hello world"
+            exit 0
   profit_and_loss:
     docker:
       - image: circleci/ruby:2.4.1
