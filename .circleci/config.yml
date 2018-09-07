@@ -19,9 +19,6 @@ jobs:
       - run: ruby -e "ENV['NET_INCOME'].to_i>0?(exit 0):(exit 1)"
 workflows:
   version: 2
-  wf_hello_world:
-    jobs:
-      - hello_world
   wf_successful_company:
     jobs:
       - hello_world
