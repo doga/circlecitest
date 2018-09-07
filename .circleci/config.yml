@@ -1,30 +1,33 @@
 version: 2
 jobs:
-  job_1:
+  hello_world:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"
       - run: exit 0
-  job_2:
+  profit_and_loss:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
-      - run: if [ -z "$MY_NAME" ]; then exit 1; fi
-      - run: exit 0
+      - run: ruby -e "ENV['NET_INCOME'].to_i>0?(exit 0):(exit 1)"
 workflows:
   version: 2
   wf_1:
     jobs:
-      - job_1
-  wf_all:
+      - hello_world
+  wf_positive:
     jobs:
-      - job_1
+      - hello_world
       - 
-        job_2:
+        profit_and_loss:
+          context: successful_company
           requires: 
             - job_1
-
-  
+  wf_negative:
+    jobs:
+      - 
+        profit_and_loss:
+          context: unsuccessful_company
