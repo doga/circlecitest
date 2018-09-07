@@ -5,8 +5,11 @@ jobs:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
-      - run: echo "A first hello"
-      - run: exit 0
+      - run: 
+        name: hello world
+        command: |
+          echo "hello world"
+          exit 0
   profit_and_loss:
     docker:
       - image: circleci/ruby:2.4.1
@@ -21,13 +24,11 @@ workflows:
   wf_successful_company:
     jobs:
       - hello_world
-      - 
-        profit_and_loss:
-          context: successful_company
-          requires: 
-            - hello_world
+      - profit_and_loss:
+        context: successful_company
+        requires: 
+          - hello_world
   wf_unsuccessful_company:
     jobs:
-      - 
-        profit_and_loss:
-          context: unsuccessful_company
+      - profit_and_loss:
+        context: unsuccessful_company
