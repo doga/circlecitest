@@ -29,8 +29,8 @@ jobs:
           at: ./workspace
       - 
         run: |
-          ls hello_world.txt
-          cat hello_world.txt
+          ls workspace/hello_world.txt
+          cat workspace/hello_world.txt
           exit 0
 workflows:
   version: 2
