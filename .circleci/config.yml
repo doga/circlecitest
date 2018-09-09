@@ -27,4 +27,7 @@ workflows:
   workspace_test:
     jobs:
       - produce_file
-      - consume_file
+      - 
+        consume_file:
+          requires:
+            - produce_file
