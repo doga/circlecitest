@@ -30,6 +30,7 @@ jobs:
       - 
         run: |
           ls hello_world.txt
+          cat hello_world.txt
           exit 0
 workflows:
   version: 2
