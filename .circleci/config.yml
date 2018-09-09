@@ -1,37 +1,30 @@
 version: 2
 jobs:
-  hello_world:
+  produce_file:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
-      - checkout
       - 
-        run: 
-          name: hello world
-          command: |
-            echo "hello world"
-            exit 0
-  profit_and_loss:
+        run: |
+          mkdir -p /tmp/circlecitest && echo "hello world" > /tmp/circlecitest/hello_world.txt
+      - 
+        persist_to_workspace:
+          root: /tmp/circlecitest
+          paths:
+            - hello_world.txt
+  consume_file:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
-      - checkout
-      - run: ruby -e "ENV['NET_INCOME'].to_i>0?(exit 0):(exit 1)"
+      - 
+        attach_workspace:
+          at: /tmp/circlecitest
+      - 
+        run: |
+          ls /tmp/workspace/hello_world.txt
 workflows:
   version: 2
-  wf_hello_world:
+  workspace_test:
     jobs:
-      - hello_world
-  wf_successful_company:
-    jobs:
-      - hello_world
-      - 
-        profit_and_loss:
-          context: successful_company
-          requires: 
-            - hello_world
-  wf_unsuccessful_company:
-    jobs:
-      - 
-        profit_and_loss:
-          context: unsuccessful_company
+      - produce_file
+      - consume_file
