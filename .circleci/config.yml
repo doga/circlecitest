@@ -12,6 +12,7 @@ jobs:
       - 
         run: |
           echo "hello world" > hello_world.txt
+          exit 0 # CircleCI hangs if I remove this
       - 
         persist_to_workspace:
           root: .
@@ -28,7 +29,7 @@ jobs:
           at: ~/project
       - 
         run: |
-          ls hello_wrld.txt
+          ls hello_world.txt
           exit 0
 workflows:
   version: 2
