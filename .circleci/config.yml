@@ -28,7 +28,7 @@ jobs:
           at: ~/project
       - 
         run: |
-          ls hello_world.txt
+          ls hello_wrld.txt
 workflows:
   version: 2
   workspace_test:
